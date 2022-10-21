@@ -35,10 +35,45 @@ const createBook = async (req, res) => {
   //   res.json({ mssg: "Post a new book" });
 };
 // delete a book
+const deleteBook = async (req, res) => {
+  const { id } = req.params;
+
+  //check is ID valid
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such books !" });
+  }
+
+  const book = await Book.findOneAndDelete({ _id: id });
+
+  if (!book) {
+    return req.status(400).json({ error: "Nom such books !" });
+  }
+  res.status(200).json(book);
+};
 // update a book
+const updateBookInfo = async (req, res) => {
+  const { id } = req.params;
+  //check is ID valid
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such books !" });
+  }
+
+  const book = await Book.findOneAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    }
+  );
+  if (!book) {
+    return req.status(400).json({ error: "No such books" });
+  }
+  res.status(200).json(book);
+};
 
 module.exports = {
-  createBook,
   getBook,
   getBooks,
+  createBook,
+  deleteBook,
+  updateBookInfo,
 };

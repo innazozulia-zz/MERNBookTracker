@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f1f1f1;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background: #fff;
+}
+
+header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header a {
+  color: #333;
+  text-decoration: none;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 100px;
+}
+
+.pages {
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.book-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.description,
+.found-page {
+  display: flex;
+  align-items: center;
+}
+
+.description strong,
+.found-page strong {
+  margin: 0 5px;
+  color: rgb(85, 85, 85);
+}
+
+.icon {
+  color: rgb(85, 85, 85);
+}
+
+.book-details {
+  background: #fff;
+  margin: 20px auto;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.book-details h2 {
+  color: var(--primary);
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
