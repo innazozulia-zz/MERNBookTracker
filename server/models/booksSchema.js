@@ -9,7 +9,7 @@ const bookSchema = new Schema(
       required: true,
     },
     //reps
-    descr: {
+    description: {
       type: String,
       required: true,
     },

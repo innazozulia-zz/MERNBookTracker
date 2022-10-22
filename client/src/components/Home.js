@@ -1,8 +1,11 @@
 import React from "react";
 import BookDetails from "./BookDetails";
+import BookForm from "./BookForm";
+import { useBooksContext } from "../hooks/useBooksContext";
 
 const Home = () => {
-  const [books, setBooks] = React.useState(null);
+  // const [books, setBooks] = React.useState(null);
+  const { books, dispatch } = useBooksContext();
 
   React.useEffect(() => {
     const fetchBooks = async () => {
@@ -10,11 +13,12 @@ const Home = () => {
       const json = await response.json();
 
       if (response.ok) {
-        setBooks(json);
+        dispatch({ type: "SET_BOOKS", payload: json });
+        // setBooks(json);
       }
     };
     fetchBooks();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="home">
@@ -22,6 +26,7 @@ const Home = () => {
         {books &&
           books.map((book) => <BookDetails book={book} key={book._id} />)}
       </div>
+      <BookForm />
     </div>
   );
 };

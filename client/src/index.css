@@ -51,18 +51,21 @@ header a {
 
 .description,
 .found-page {
-  display: flex;
+  /* display: flex; */
+  display: block;
   align-items: center;
+  max-width: 800px;
+  margin: 0 10px;
 }
 
 .description strong,
 .found-page strong {
   margin: 0 5px;
-  color: rgb(85, 85, 85);
+  color: #ff785a;
 }
 
 .icon {
-  color: rgb(85, 85, 85);
+  color: #ff785a;
 }
 
 .book-details {
@@ -77,4 +80,41 @@ header a {
   color: var(--primary);
   margin: 0 0 10px 0;
   font-size: 24px;
+}
+
+div.error {
+  padding: 10px;
+  background: #f2a2bb;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-book-add {
+  margin: 0 4px;
+}
+
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+label,
+input {
+  display: block;
 }

@@ -8,7 +8,7 @@ const BookDetails = ({ book }) => {
       <p className="description">
         <ImBooks className="icon" />
         <strong>Description: </strong>
-        {book.descr}
+        {book.description}
       </p>
       <p className="found-page">
         <MdFindInPage className="icon" />
