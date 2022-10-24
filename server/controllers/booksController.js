@@ -7,6 +7,7 @@ const getBooks = async (req, res) => {
 
   res.status(200).json(books);
 };
+
 // get a single book
 const getBook = async (req, res) => {
   const { id } = req.params;
@@ -22,9 +23,28 @@ const getBook = async (req, res) => {
   }
   res.status(200).json(book);
 };
+
 // create a new book
 const createBook = async (req, res) => {
   const { title, description, load } = req.body;
+
+  //check errors at form
+  let emptyFields = [];
+  if (!title) {
+    emptyFields.push("title");
+  }
+  if (!description) {
+    emptyFields.push("description");
+  }
+  if (!load) {
+    emptyFields.push("load");
+  }
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Please fill in all fields", emptyFields });
+  }
+
   //add data to DB
   try {
     const book = await Book.create({ title, description, load });
@@ -34,6 +54,7 @@ const createBook = async (req, res) => {
   }
   //   res.json({ mssg: "Post a new book" });
 };
+
 // delete a book
 const deleteBook = async (req, res) => {
   const { id } = req.params;
@@ -50,6 +71,7 @@ const deleteBook = async (req, res) => {
   }
   res.status(200).json(book);
 };
+
 // update a book
 const updateBookInfo = async (req, res) => {
   const { id } = req.params;

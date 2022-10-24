@@ -58,6 +58,34 @@ header a {
   margin: 0 10px;
 }
 
+.delete-button {
+  border: none;
+  background: var(--error);
+  color: #fff;
+  padding: 5px;
+  border-radius: 4px;
+  margin: 10px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease-in-out;
+  max-width: 100px;
+}
+
+.delete-button:hover {
+  transform: scale(1.1);
+}
+
+.delete-btn {
+  margin: 0 5px;
+  transition: all .2s ease-in-out;
+}
+
+.delete-btn:hover {
+  transform: scale(1.5);
+}
+
 .description strong,
 .found-page strong {
   margin: 0 5px;
@@ -74,6 +102,8 @@ header a {
   border-radius: 4px;
   padding: 20px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
 }
 
 .book-details h2 {
@@ -100,6 +130,11 @@ form button {
   border-radius: 4px;
   display: flex;
   align-items: center;
+  transition: all .2s ease-in-out;
+}
+
+form button:hover {
+  transform: scale(1.1);
 }
 
 .icon-book-add {
@@ -117,4 +152,8 @@ input {
 label,
 input {
   display: block;
+}
+
+input.error {
+  border: 1px solid var(--error);
 }
