@@ -5,7 +5,7 @@ export const useBooksContext = () => {
   const context = React.useContext(BooksContext);
 
   if (!context) {
-    throw Error("must be inside an BooksContextProvider");
+    throw Error("Must be inside an BooksContextProvider");
   }
 
   return context;

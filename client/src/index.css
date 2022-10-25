@@ -147,6 +147,7 @@ input {
   margin-bottom: 20px;
   border-radius: 4px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 label,
@@ -156,4 +157,38 @@ input {
 
 input.error {
   border: 1px solid var(--error);
+}
+
+nav {
+  margin-right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+}
+
+nav a {
+  margin-left: 10px;
+}
+
+form.signup,
+form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+form.login h3,
+form.signup h3,
+.login-form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.login-title,
+.signup-title {
+  margin: 0 5px;
 }

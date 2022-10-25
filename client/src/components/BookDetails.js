@@ -5,6 +5,7 @@ import { useBooksContext } from "../hooks/useBooksContext";
 
 const BookDetails = ({ book }) => {
   const { dispatch } = useBooksContext();
+
   const deleteBook = async () => {
     const response = await fetch("/api/books/" + book._id, {
       method: "DELETE",
