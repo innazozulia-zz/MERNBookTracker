@@ -1,9 +1,11 @@
 import React from "react";
 import { GiNotebook } from "react-icons/gi";
 import { useBooksContext } from "../hooks/useBooksContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const BookForm = () => {
   const { dispatch } = useBooksContext();
+  const { user } = useAuthContext();
 
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
@@ -14,6 +16,11 @@ const BookForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
+
     const book = { title, description, load };
 
     const response = await fetch("/api/books", {
@@ -21,6 +28,7 @@ const BookForm = () => {
       body: JSON.stringify(book),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
       },
     });
     const json = await response.json();

@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsBookmarksFill } from "react-icons/bs";
-import { FiLogIn } from "react-icons/fi";
-import { HiOutlineUserPlus } from "react-icons/hi2";
+import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const NavBar = () => {
+  const { logout } = useLogout();
+  const { user } = useAuthContext();
+
+  const handleLogout = () => {
+    logout();
+  };
   return (
     <header>
       <div className="container">
@@ -16,14 +22,18 @@ const NavBar = () => {
         </Link>
       </div>
       <nav>
-        <div>
-          <Link to="/login" className="login-form">
-            Login <FiLogIn className="login-title" />
-          </Link>
-          <Link to="/signup">
-            Signup <HiOutlineUserPlus className="signup-title" />
-          </Link>
-        </div>
+        {user && (
+          <div>
+            {user.email}
+            <button onClick={handleLogout}>Log out</button>
+          </div>
+        )}
+        {!user && (
+          <div>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
+          </div>
+        )}
       </nav>
     </header>
   );

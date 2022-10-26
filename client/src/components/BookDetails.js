@@ -1,14 +1,23 @@
 import { BsTrashFill } from "react-icons/bs";
 import { ImBooks } from "react-icons/im";
 import { MdFindInPage } from "react-icons/md";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useBooksContext } from "../hooks/useBooksContext";
 
 const BookDetails = ({ book }) => {
   const { dispatch } = useBooksContext();
+  const { user } = useAuthContext();
 
   const deleteBook = async () => {
+    if (!user) {
+      return;
+    }
+
     const response = await fetch("/api/books/" + book._id, {
       method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
     const json = await response.json();
     if (response.ok) {

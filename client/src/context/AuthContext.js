@@ -17,6 +17,13 @@ export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(authReducer, {
     user: null,
   });
+  //render in login and check token
+  React.useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      dispatch({ type: "LOGIN", payload: user });
+    }
+  }, []);
   console.log("AuthContext State: ", state);
   return (
     <AuthContext.Provider value={{ ...state, dispatch }}>

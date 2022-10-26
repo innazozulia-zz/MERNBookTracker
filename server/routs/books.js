@@ -6,7 +6,13 @@ const {
   deleteBook,
   updateBookInfo,
 } = require("../controllers/booksController");
+
+const requireAuth = require("../middleware/requireAuth");
+
+//require auth for all book routes
 const router = express.Router();
+
+router.use(requireAuth);
 
 //get all books
 router.get("/", getBooks);

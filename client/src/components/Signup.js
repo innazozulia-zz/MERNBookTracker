@@ -1,20 +1,23 @@
 import React from "react";
-import { HiOutlineUserPlus } from "react-icons/hi2";
+import { TbDoorExit } from "react-icons/tb";
+import { useSignup } from "../hooks/useSignup";
 
 const Signup = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const { signup, error, isLoading } = useSignup();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const user = { email, password };
-    console.log(user);
+
+    await signup(email, password);
   };
 
   return (
     <form className="signup" onSubmit={handleSubmit}>
       <h3>
-        Sign up <HiOutlineUserPlus className="signup-title" />
+        Sign up
+        <TbDoorExit className="signup-title" />
       </h3>
       <label>Email:</label>
       <input
@@ -28,7 +31,8 @@ const Signup = () => {
         onChange={(e) => setPassword(e.target.value)}
         value={password}
       ></input>
-      <button>Sign Up</button>
+      <button disabled={isLoading}>Sign Up</button>
+      {error && <div className="error">{error}</div>}
     </form>
   );
 };

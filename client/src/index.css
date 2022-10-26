@@ -181,14 +181,18 @@ form.login {
 }
 
 form.login h3,
-form.signup h3,
-.login-form {
+form.signup h3 {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.login-title,
-.signup-title {
-  margin: 0 5px;
+nav button {
+  background: #fff;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 10px;
 }
